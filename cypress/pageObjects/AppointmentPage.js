@@ -24,5 +24,16 @@ export class AppointmentPage extends BasePage{
     static get bookAppointmentButton(){
         return cy.get("button#btn-book-appointment");
     }
+    static get menuButton(){
+        return cy.get("a#menu-toggle");
+    }
+
+    static validateSidebar(){
+        return cy.get("nav#sidebar-wrapper").should("have.class", "active");
+    }
+
+    static get historyButton(){
+        return cy.get('[href="history.php#history"]');
+    }
   }
   

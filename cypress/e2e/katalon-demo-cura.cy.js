@@ -1,5 +1,6 @@
 const { AppointmentPage } = require("../pageObjects/AppointmentPage");
 const { AppointmentSummaryPage } = require("../pageObjects/AppointmentSummaryPage");
+const { HistoryPage } = require("../pageObjects/HistoryPage");
 const { HomePage } = require("../pageObjects/HomePage")
 
 describe('katalon-demo-cura scenarios', () => {
@@ -9,10 +10,8 @@ describe('katalon-demo-cura scenarios', () => {
     // ii. Click - Make Appointment
     HomePage.appointmentButton.click();
     // iii. Set username and password fields with the demo account credentials
-    const username = `John Doe`;
-    const password = `ThisIsNotAPassword`;
-    HomePage.usernameField.type(username);
-    HomePage.passwordField.type(password);
+    HomePage.usernameField.type("John Doe");
+    HomePage.passwordField.type("ThisIsNotAPassword");
     // iv. Click - Login
     HomePage.loginButton.click();
     // v. Set the following values:
@@ -44,11 +43,19 @@ describe('katalon-demo-cura scenarios', () => {
     // i. Open https://katalon-demo-cura.herokuapp.com/
     HomePage.visit();
     // ii. Click - Make Appointment
+    HomePage.appointmentButton.click();
     // iii. Set username and password fields with the demo account credentials
+    HomePage.usernameField.type("John Doe");
+    HomePage.passwordField.type("ThisIsNotAPassword");
     // iv. Click - Login
+    HomePage.loginButton.click();
     // v. Click - Menu/Stack/Burger icon
+    AppointmentPage.menuButton.click();
     // vi. Validate that the sidebar is active
+    AppointmentPage.validateSidebar();
     // vii. Click - History
+    AppointmentPage.historyButton.click();
     // viii. Validate that - No appointment - is visible
+    HistoryPage.validateNoAppoitments();
   });
 })
